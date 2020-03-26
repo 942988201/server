@@ -1,2 +1,4 @@
 # server
-啊沙发沙发沙发手动阀手动阀
+进来 npm i ；
+node server.js; 开启server
+去文件夹里直接点开index。html，这样就跨域了
