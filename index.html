@@ -3,19 +3,52 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		
+		<style type="text/css">
+			div{
+				cursor: pointer;
+				width:100px;
+				border: 1px solid chocolate;
+				margin: 5px;
+			}
+		</style>
 	</head>
 	<body>
 		
-		<div id="div1">请求1</div>
+		<div id="div1">请求1 请求header</div>
+		<div id="div2">请求2 请求cookie</div>
 		<script src="js/jq.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		
 		<script type="text/javascript">
+			let url = "http://localhost.:3000/"//用fidder抓包，就要加一个点在这
 			$("#div1").click(function(){
 				$.ajax({
 					type:"get",
-					url:"http://localhost.:3000",
+					xhrFields: {
+					    withCredentials: true    // 设置此项后会发送cookie 过去
+					},
+					url:url+"header",
 					complete:function(xhr,data){
+						console.log("header内容")
 						console.log(xhr)
+						console.log(xhr.getAllResponseHeaders())
+					}
+				})
+			})
+			document.cookie='cookie1=cookie1'
+			$("#div2").click(function(){
+				
+				$.ajax({
+					type:"get",
+					xhrFields: {
+					    withCredentials: true    // 设置此项后会发送cookie 过去
+					},
+					url:url+"cookie",
+					success:function(data){
+						console.log(document.cookie)
+						console.log(data)
+						
 					}
 				})
 			})

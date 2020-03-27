@@ -8,7 +8,7 @@ const header = (ctx,next)=>{
 	ctx.set("ceshi2",'gggg');
 	ctx.set('Access-Control-Allow-Headers','qianduanceshi1,qianduanceshi2');
 	ctx.set("Access-Control-Expose-Headers",'ceshi1,ceshi2,Date')
-	ctx.set('Access-Control-Allow-Credentidals','true')
+	ctx.set('Access-Control-Allow-Credentials','true')
 	
 	
 	let url =ctx.url;
